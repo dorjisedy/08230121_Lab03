@@ -1,0 +1,336 @@
+/* ===================== BASE / RESET ===================== */
+/* Remove browser default spacing and set base font sizing */
+* {
+  box-sizing: border-box; /* Better box model handling */
+}
+html {
+  font-size: 16px; /* Base font size (scales with user settings) */
+}
+body {
+  margin: 0; /* Remove default body margin */
+  font-family: "Helvetica Neue", Arial, sans-serif; /* Clean readable font */
+  color: #1c2b2d; /* Dark teal-ish text color for good contrast */
+  background: #fafafa; /* Subtle off-white page background */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* ===================== SITE WRAPPER ===================== */
+.site-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Make footer sit at bottom */
+}
+
+/* ===================== HERO / COVER STYLES ===================== */
+/* The hero background uses a books-themed image with an overlay */
+.hero {
+  position: relative;
+  /* IMPORTANT: book background image in images/ */
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbtzfx4TbDfhQlDR-qyUubbiBFYgatICFhhg&s") center/cover no-repeat;
+  color: #fff; /* Light text over dark overlay */
+  padding: 48px 20px;
+  /* Use clip-path to give a stylish bottom edge (subtle curve) */
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+/* A semi-transparent overlay to make text readable on the image */
+.hero-overlay {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  background: linear-gradient(180deg, rgba(8, 34, 45, 0.6), rgba(8, 34, 45, 0.7));
+  z-index: 0;
+}
+
+/* Container for photo and text in hero */
+.hero-content {
+  position: relative;
+  z-index: 1; /* Place above the overlay */
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+/* HERO PHOTO (left column) */
+.hero-photo {
+  flex: 0 0 220px; /* Fixed width column for the photo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-photo img {
+  width: 200px;           /* Make the image sit nicely, adjust as needed */
+  height: 200px;
+  object-fit: cover;      /* Crop to fill the square */
+  border-radius: 12px;    /* Rounded portrait corners */
+  border: 4px solid rgba(255,255,255,0.15);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* HERO TEXT (right column) */
+.hero-text {
+  flex: 1; /* Take remaining space */
+  padding: 8px 16px;
+}
+.ribbon {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+.hero h1 {
+  margin: 6px 0;
+  font-size: 2.1rem; /* big name */
+  letter-spacing: 0.5px;
+}
+.tagline {
+  margin: 6px 0 12px;
+  font-style: italic;
+  font-weight: 500;
+  opacity: 0.95;
+}
+.brief {
+  margin: 0 0 16px;
+  max-width: 60ch; /* keep line length readable */
+}
+
+/* Hero buttons */
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #ffcf66; /* warm yellow button */
+  color: #102022;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+.btn-outline {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 8px 14px;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  transition: transform 180ms ease;
+}
+
+/* Decorative books-ad strip (below main hero) */
+.books-ad {
+  position: relative;
+  margin-top: 18px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.books-ad img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.6);
+}
+.books-ad-text {
+  position: absolute;
+  left: 24px;
+  top: 18px;
+  color: #fff;
+}
+.books-ad-text h2 {
+  margin: 0 0 6px;
+  font-size: 1.3rem;
+}
+.books-ad-text p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* ===================== NAVIGATION ===================== */
+.main-nav {
+  background: #fff; /* white bar for nav */
+  border-bottom: 1px solid #e6e6e6;
+  position: sticky;
+  top: 0;
+  z-index: 80;
+}
+.main-nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 20px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+.main-nav a {
+  color: #0d3b3f;
+  text-decoration: none;
+  font-weight: 600;
+}
+.main-nav a:hover {
+  color: #196f7a;
+}
+
+/* ===================== SECTION / CONTAINER STYLES ===================== */
+.section {
+  padding: 48px 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,1), rgba(249,250,252,1));
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Simple 2-column grid utility */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: center;
+}
+
+/* Headings */
+h2 {
+  margin: 0 0 12px;
+  font-size: 1.6rem;
+  color: #0b3a3d;
+}
+
+/* Lists styling */
+.education-list, .achievements-list {
+  margin: 12px 0 0;
+  padding-left: 18px;
+}
+.education-list li, .achievements-list li {
+  margin-bottom: 8px;
+}
+
+/* Image in education area */
+.education-art img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(12,25,28,0.08);
+}
+
+/* ===================== SKILLS ===================== */
+.skills .skill-block {
+  margin: 14px 0;
+}
+.skill-block h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+.skill-block ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+
+/* ===================== PROJECTS GRID ===================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 12px;
+}
+.project-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 8px 18px rgba(8,20,22,0.05);
+}
+.project-card .thumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+.project-card .thumbs img {
+  width: 48%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* ===================== CONTACT FORM ===================== */
+.contact form {
+  display: grid;
+  gap: 10px;
+}
+.contact label {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.contact input[type="text"],
+.contact input[type="email"],
+.contact textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d7e2e3;
+  width: 100%;
+  font-size: 1rem;
+}
+.contact button.btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 0;
+  background: #ffcf66;
+  cursor: pointer;
+  font-weight: 800;
+}
+.contact button.btn:hover { transform: translateY(-2px); }
+
+/* ===================== FOOTER ===================== */
+.site-footer {
+  margin-top: auto;
+  background: #072a2d;
+  color: #fff;
+  padding: 18px 20px;
+  text-align: center;
+}
+
+/* ===================== RESPONSIVE BREAKPOINTS ===================== */
+/* Medium screens and below: stack hero content vertically */
+@media (max-width: 900px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-photo { order: 2; }   /* put photo below text on small screens */
+  .hero-text { order: 1; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .books-ad img { height: 120px; }
+}
+
+/* Small screens: navigation becomes horizontally scrollable if content overflows */
+@media (max-width: 480px) {
+  html { font-size: 15px; }
+  .hero-photo img { width: 160px; height: 160px; }
+  .hero h1 { font-size: 1.6rem; }
+  .ribbon { font-size: 0.75rem; }
+  .main-nav ul { gap: 12px; padding: 10px; overflow-x: auto; }
+  .books-ad img { height: 90px; object-position: center; }
+}
+
+/* ===================== UTILITY CLASSES ===================== */
+/* small helper to show subtle borders or spacing where needed */
+.small-muted { color: #6a7b7c; font-size: 0.95rem; }
